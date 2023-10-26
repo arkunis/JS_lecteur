@@ -248,7 +248,7 @@ function next() {
 }
 
 function search(index){
-    refi = index;
+
     let input = document.getElementById('search').value;
     input=input.toLowerCase();
     let x = document.getElementById('monid');
@@ -261,7 +261,7 @@ function search(index){
             x[j].style.display="none";
         }
         else {
-            x[j].style.display="";
+            x[j].style.display="inline";
         }
     }
 
