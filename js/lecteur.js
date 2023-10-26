@@ -1,5 +1,5 @@
-let play = "Play";
-let pauses = "Pause";
+let play = '<i class="fa-solid fa-play"></i>';
+let pauses = '<i class="fa-solid fa-pause"></i>';
 let vol = 0.5;
 let refi = 0;
 let songfetch;
@@ -7,7 +7,7 @@ let songfetch;
 function init() {
     document.getElementById('lecteur').volume = vol;
     document.getElementById('range').value = vol;
-    document.getElementById('play').innerText = play;
+    document.getElementById('play').innerHTML = play;
 
 
     document.getElementById('suivant').addEventListener('click', function () { suivant() });
@@ -16,6 +16,7 @@ function init() {
     document.getElementById('volumemoins').addEventListener('click', function () { volumemoins() });
     document.getElementById('volumeplus').addEventListener('click', function () { volumeplus() });
     document.getElementById('search').addEventListener('keyup', function () { search() });
+
 
     var client_id = 'fdaad47b01894c02984c73467e9dea84';
     var client_secret = 'aafc32e40cab405aa1efecb9f0b0660f';
@@ -78,10 +79,10 @@ function init() {
 function lecture() {
     if (document.getElementById('lecteur').paused == true) {
         document.getElementById('lecteur').play();
-        document.getElementById('play').innerText = play.replace(play, pauses);
+        document.getElementById('play').innerHTML = play.replace(play, pauses);
     } else {
         document.getElementById('lecteur').pause();
-        document.getElementById('play').innerText = play.replace(play, play);
+        document.getElementById('play').innerHTML = play.replace(play, play);
     }
 }
 
@@ -190,7 +191,7 @@ function next() {
 }
 
 function search() {
-    let input = document.getElementById('search').value
+    let input = document.getElementById('search').value;
     input=input.toLowerCase();
     let x = document.getElementsByClassName('toutpeter');
     let y = document.getElementsByClassName('titre');

@@ -8,105 +8,188 @@ html {
 }
 
 body {
-    width: 70%;
+    width: 100%;
     margin: auto;
 }
 
 header {
-    background-color: blanchedalmond;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #79AACB;
     padding: 0.5%;
     margin-bottom: 3%;
-    border: 1px solid rgb(255, 231, 96);
-    border-radius: 12px;
+    box-shadow: 0px 3px 8px #4A584C80;
 }
 
 main {
-    width: 100%;
-    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.5);
-    padding: 3%;
+    width: 70%;
+    box-shadow: 0px 6px 8px #4A584C80;
+
+    margin: auto;
     margin-bottom: 3%;
 }
 
 .lecteur {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     display: flex;
     flex-direction: row;
-    align-items: center
+    align-items: center;
+    background-color: #79AACB;
+    padding: 1%;
+    box-shadow: 0px -5px 10px 0px #4A584C80;
 }
 
-.c2 {
-    width: 100%;
-}
-
-.c1 {
+.global {
+    width: 70%;
+    margin: auto;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
 }
 
-.c2 {
+.inputlecteur {
+    width: 90%;
+    margin-bottom: 3vh;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.c3 {
-    display: flex;
-    justify-content: end;
+/* button vol et suiv etc */
+.backward,
+.forward {
+    border-radius: 50%;
+    border: none;
 }
 
-.control1 {
-    width: 90%;
-    margin-bottom: 3vh;
-    display: flex;
-    justify-content: start;
-    gap: 5%
-}
-
-
-.control2 {
+.buttongenerique {
     display: flex;
     flex-direction: row;
-    width: 90%;
-}
-
-a {
-    text-decoration: none;
-}
-
-li {
-    list-style: none;
-}
-
-.contenue {
-    display: flex;
-    flex-direction: row;
-    margin-top: 5%;
-    gap: 5%;
-}
-
-nav {
+    justify-content: space-around;
     width: 100%;
+    margin-bottom: 2vh;
+}
+
+.volumeinput {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 3%;
+}
+
+.information {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5%;
+    margin: 0;
+}
+
+#titreartiste {
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #E1E4EF;
+}
+
+#titremusic {
+    font-size: smaller;
+    color: #262928;
+}
+
+.tempsmusique {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    height: 10px;
+    gap: 3%;
+    margin: 0;
+}
+
+#temps {
+    font-size: smaller;
+}
+
+.loupe {
+    background-color: #262928;
+    color: #E1E4EF;
+    padding: 1%;
+}
+
+.loupeetsearch {
+    display: flex;
+    flex-direction: row;
+}
+
+#searchtop {
+    display: flex;
+    padding: 0.5%;
+}
+
+.toutlesbuttons {
+    display: flex;
+    flex-direction: row;
+}
+
+/* */
+
+.contenu {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
-nav li {
-    background-color: aliceblue;
-    width: 80px;
-    border: 0.5px solid rgba(0, 0, 0, 0.3);
-    padding: 5%;
+.navcouleur {
+    background-color: #79AACB;
+    width: 100%;
+
 }
 
-nav a {
-    padding: 5%;
-    background-color: aliceblue;
+.nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
 }
+
+.nav li {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    padding: 3%;
+}
+
+.nav li:hover {
+    background-color: #4F5D50;
+    color: #E1E4EF;
+}
+
+.nav a {
+    font-size: x-large;
+    color: #E1E4EF;
+}
+
 
 .minia {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
-    gap: 1%;
+    gap: 2%;
+}
+
+.montitrepourminia {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: x-large;
 }
 
 .cards img {
@@ -115,19 +198,22 @@ nav a {
 
 .cards {
     background-color: aliceblue;
-    border: 1px solid black;
+    border: 1px solid #A99A88;
+    border-radius: 0 10px 0 10px;
+    box-shadow: 0px 3px 8px #4A584C80;
     padding: 2%;
     margin-bottom: 3%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 25vh;
-}
-.cards a {
-    color: rgba(0, 0, 0, 0.678);
+    width: 30vh;
 }
 
-.titre{
+.cards a {
+    color: #526353;
+}
+
+.titre {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -138,78 +224,63 @@ nav a {
 }
 
 
-@media screen and (max-width:900px) {
-    body{
-        width: 90%;
+/* autre */
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+/* fin autre */
+
+@media screen and (max-width:1024px) {
+
+    .global {
+        width: 70%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
+
     .lecteur {
+        position: sticky;
+        bottom: 0;
+        left: 0;
+        width: 100%;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
+        background-color: #79AACB;
+        padding: 1%;
     }
 
-    .control1 {
-        width: 100%;
-        margin-bottom: 3vh;
+    .toutlesbuttons {
         display: flex;
         flex-direction: row;
         justify-content: center;
-        gap: 20%;
     }
 
-    .control2 {
+    .information {
         display: flex;
         flex-direction: row;
+        align-items: center;
         gap: 5%;
-        justify-content: center;
-        width: 100%;
-    }
-
-    .c2 {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        align-items: center;
-        margin-bottom: 5%;
-    }
-
-    .c2 p {
         margin: 0;
-    }
-
-    .titreetbarre {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        gap: 5%;
-        width: 100%;
-    }
-
-    .c3 {
-        display: flex;
         justify-content: center;
     }
 
-    .contenue {
+    .tempsmusique {
         display: flex;
-        flex-direction: column;
-        margin-top: 5%;
+        flex-direction: row-reverse;
+        align-items: center;
+        height: 10px;
+        gap: 3%;
+        margin: 0;
+        justify-content: center;
     }
 
-    nav {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        margin-bottom: 3%;
-    }
-
-    nav li {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        background-color: aliceblue;
-        padding: 3%;
-    }
 
 }

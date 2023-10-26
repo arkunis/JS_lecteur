@@ -6,74 +6,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <script type="text/javascript" src="js/lecteur.js"></script>
+    <script src="https://kit.fontawesome.com/a606278b24.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
 
 <body onload="init()">
     <header>
-        <p>large</p>
+        <article class="loupeetsearch" id="searchtop">
+            <label for="search" class="loupe"><i class="fa-solid fa-magnifying-glass"></i></label> <input type="search"
+                name="search" id="search" placeholder="Recherche">
+        </article>
     </header>
 
+
     <main>
-        <section class="lecteur">
-            <article class="c1">
-                <div class="control1">
-                    <button type="button" id="precedent">
-                        P </button>
-
-                            <button type="button" id="play"></button>
-                            <audio id="lecteur" ontimeupdate="lecteurduree()" ondurationchange="changeduration()" onended="next()"></audio>
-
-                            <button type="button" id="suivant">
-                                S
-                            </button>
-                </div>
-
-                <div class="control2">
-                    <button type="button" id="volumemoins">-</button>
-                    <input type="range" name="range" id="range" min="0" max="1" step="0.1" value="" onchange="inputvol()">
-                    <button type="button" id="volumeplus">+</button>
-                </div>
-            </article>
-
-            <article class="c2">
-                <h2 id="titreartiste"></h2>
-                <div class="titreetbarre">
-                    <p id="titremusic"></p> <p id="temps"></p>
-                    <input type="range" name="tempschanson" id="tempschanson" onchange="inputmusic()" min="0" max="100" value="0">
-                    
-                </div>
-            </article>
-
-            <article class="c3">
-                <input type="search" name="search" id="search" placeholder="Recherche">
-            </article>
-        </section>
-
-
-
-        <section class="contenue">
-            <article class="nav">
-                <nav>
-                    <li><a href="#">Music</a></li>
-                    <li><a href="#">Vidéos</a></li>
-                    <li><a href="#">Podcasts</a></li>
+        <section class="contenu">
+            <article class="navcouleur">
+                <nav class="nav">
+                    <li><a href="">Lien</a></li>
+                    <li><a href="">Lien</a></li>
+                    <li><a href="">Lien</a></li>
                 </nav>
             </article>
 
-            <article class="minia" id="Mescarte">
+            <section class="montitrepourminia">
+                <h2>Nos musiques :</h2>
+                <article class="minia" id="Mescarte">
 
-                <!-- <div class="cards">
-                    <a href="#" id="cover"><img src="img/1.png" alt="img"></a>
-                    <h2><a href="#" id="titre">Titre</a></h2>
-                    <p><a href="#" id="artiste">Nom artiste</a></p>
-                </div> -->
-              <!-- Put any keywords here -->
-
-            </article>
+                </article>
+            </section>
         </section>
     </main>
 
+
+    <footer>
+        <section class="lecteur">
+
+            <section class="global">
+                <article class="toutlesbuttons">
+                    <audio id="lecteur" ontimeupdate="lecteurduree()" ondurationchange="changeduration()"
+                        onended="next()"></audio>
+                    <div class="inputlecteur">
+                        <span class="buttongenerique">
+                            <button type="button" id="precedent" class="backward"><i
+                                    class="fa-solid fa-backward"></i></button>
+                            <button type="button" id="play" class="playpause"></button>
+                            <button type="button" id="suivant" class="forward"><i
+                                    class="fa-solid fa-forward"></i></button>
+                        </span>
+
+                        <span class="volumeinput">
+                            <button type="button" id="volumemoins"><i class="fa-solid fa-minus"></i></button>
+                            <input type="range" name="range" id="range" min="0" max="1" step="0.1" value=""
+                                onchange="inputvol()">
+                            <button type="button" id="volumeplus"><i class="fa-solid fa-plus"></i></button>
+                        </span>
+                    </div>
+                </article>
+
+                <article>
+                    <span class="information">
+                        <h2 id="titreartiste"></h2>
+                        <q id="titremusic"></q>
+                    </span>
+                    <span class="tempsmusique">
+                        <p id="temps">0s</p>
+                        <input type="range" name="tempschanson" id="tempschanson" onchange="inputmusic()" min="0"
+                            max="100" value="0">
+                    </span>
+                </article>
+
+            </section>
+        </section>
+    </footer>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
 </body>
 
