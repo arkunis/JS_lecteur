@@ -49,7 +49,7 @@ function init() {
     document.getElementById('play').addEventListener('click', function () { lecture() });
     document.getElementById('volumemoins').addEventListener('click', function () { volumemoins() });
     document.getElementById('volumeplus').addEventListener('click', function () { volumeplus() });
-    document.getElementById('search').addEventListener('keyup', function(){search()});
+
 
 
     // fetch('https://cors-anywhere.herokuapp.com/https://api.deezer.com/album/302127')
@@ -123,6 +123,7 @@ function init() {
                     '<a href="#" id="cover"><img src="' + songfetch.images[1].url + '" alt="img"></a> <h2 class="titre"><a href="#" id="titre">' + songfetch.tracks.items[i].name + '</a></h2> <p><a href="#" id="artiste">' + songfetch.artists[0].name + '</a></p>';
                 const macartepleine = document.getElementById('Mescarte');
                 madivcards.addEventListener("click", function () { carteclique(i); });
+                document.getElementById('search').addEventListener('keyup', function(){search(i)});
                 macartepleine.appendChild(madivcards);
             }
 		});	
@@ -246,17 +247,17 @@ function next() {
     lecture();
 }
 
-function search(){
-
+function search(index){
+    refi = index;
     let input = document.getElementById('search').value;
     input=input.toLowerCase();
-    let x = document.getElementsById('monid');
-    let y = document.getElementsById('titre');
-    let z = document.getElementsById('artiste');
+    let x = document.getElementById('monid');
+    let y = document.getElementById('titre');
+    let z = document.getElementById('artiste');
   
   
-    for (j = 0; j < x.length; j++) { 
-        if (!y[j].innerHTML.toLowerCase().includes(input) && !z[j].innerHTML.toLowerCase().includes(input)) {
+    for (j = 0; j < songfetch.tracks.items.length; j++) { 
+        if (!y[j].innerText.includes(input).toLowerCase() && !z[j].innerText.includes(input).toLowerCase()) {
             x[j].style.display="none";
         }
         else {
@@ -264,5 +265,6 @@ function search(){
         }
     }
 
+    console.log(input);
 
 }
