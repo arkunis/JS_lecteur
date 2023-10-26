@@ -18,6 +18,7 @@ function init() {
     document.getElementById('search').addEventListener('keyup', function () { search() });
 
 
+
     var client_id = 'fdaad47b01894c02984c73467e9dea84';
     var client_secret = 'aafc32e40cab405aa1efecb9f0b0660f';
 
@@ -184,7 +185,7 @@ function inputmusic() {
 
 function next() {
     refi++;
-    document.getElementById('lecteur').src = songfetch.tracks[refi].preview_url;
+    document.getElementById('lecteur').src = songfetch.tracks.items[refi].preview_url;
     document.getElementById('titreartiste').innerText = songfetch.artists[0].name;
     document.getElementById('titremusic').innerText = songfetch.tracks.items[refi].name;
     lecture();
