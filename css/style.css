@@ -191,7 +191,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: x-large;
+    font-size: 140%;
 }
 
 .cards img {
