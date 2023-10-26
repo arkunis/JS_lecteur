@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="js/lecteur.js"></script>
+    <title>Document</title>
+</head>
+
+<body onload="init()">
+    <header>
+        <p>large</p>
+    </header>
+
+    <main>
+        <section class="lecteur">
+            <article class="c1">
+                <div class="control1">
+                    <button type="button" id="precedent">
+                        P </button>
+
+                            <button type="button" id="play"></button>
+                            <audio id="lecteur" ontimeupdate="lecteurduree()" ondurationchange="changeduration()" onended="next()"></audio>
+
+                            <button type="button" id="suivant">
+                                S
+                            </button>
+                </div>
+
+                <div class="control2">
+                    <button type="button" id="volumemoins">-</button>
+                    <input type="range" name="range" id="range" min="0" max="1" step="0.1" value="" onchange="inputvol()">
+                    <button type="button" id="volumeplus">+</button>
+                </div>
+            </article>
+
+            <article class="c2">
+                <h2 id="titreartiste"></h2>
+                <div class="titreetbarre">
+                    <p id="titremusic"></p> <p id="temps"></p>
+                    <input type="range" name="tempschanson" id="tempschanson" onchange="inputmusic()" min="0" max="100" value="0">
+                    
+                </div>
+            </article>
+
+            <article class="c3">
+                <input type="search" name="search" id="search" placeholder="Recherche">
+            </article>
+        </section>
+
+
+
+        <section class="contenue">
+            <article class="nav">
+                <nav>
+                    <li><a href="#">Music</a></li>
+                    <li><a href="#">Vidéos</a></li>
+                    <li><a href="#">Podcasts</a></li>
+                </nav>
+            </article>
+
+            <article class="minia" id="Mescarte">
+
+                <!-- <div class="cards">
+                    <a href="#" id="cover"><img src="img/1.png" alt="img"></a>
+                    <h2><a href="#" id="titre">Titre</a></h2>
+                    <p><a href="#" id="artiste">Nom artiste</a></p>
+                </div> -->
+            
+            </article>
+        </section>
+    </main>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+</body>
+
+</html>

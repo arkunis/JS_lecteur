@@ -1,0 +1,214 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 70%;
+    margin: auto;
+}
+
+header {
+    background-color: blanchedalmond;
+    padding: 0.5%;
+    margin-bottom: 3%;
+    border: 1px solid rgb(255, 231, 96);
+    border-radius: 12px;
+}
+
+main {
+    width: 100%;
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.5);
+    padding: 3%;
+    margin-bottom: 3%;
+}
+
+.lecteur {
+    display: flex;
+    flex-direction: row;
+    align-items: center
+}
+
+.c2 {
+    width: 100%;
+}
+
+.c1 {
+    display: flex;
+    flex-direction: column;
+}
+
+.c2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.c3 {
+    display: flex;
+    justify-content: end;
+}
+
+.control1 {
+    width: 90%;
+    margin-bottom: 3vh;
+    display: flex;
+    justify-content: start;
+    gap: 5%
+}
+
+
+.control2 {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+.contenue {
+    display: flex;
+    flex-direction: row;
+    margin-top: 5%;
+    gap: 5%;
+}
+
+nav {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+nav li {
+    background-color: aliceblue;
+    width: 80px;
+    border: 0.5px solid rgba(0, 0, 0, 0.3);
+    padding: 5%;
+}
+
+nav a {
+    padding: 5%;
+    background-color: aliceblue;
+}
+
+.minia {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1%;
+}
+
+.cards img {
+    width: 100%;
+}
+
+.cards {
+    background-color: aliceblue;
+    border: 1px solid black;
+    padding: 2%;
+    margin-bottom: 3%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 25%;
+}
+.cards a {
+    color: rgba(0, 0, 0, 0.678);
+}
+
+.titre{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+
+@media screen and (max-width:900px) {
+    body{
+        width: 90%;
+    }
+    .lecteur {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .control1 {
+        width: 100%;
+        margin-bottom: 3vh;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 20%;
+    }
+
+    .control2 {
+        display: flex;
+        flex-direction: row;
+        gap: 5%;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .c2 {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        margin-bottom: 5%;
+    }
+
+    .c2 p {
+        margin: 0;
+    }
+
+    .titreetbarre {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 5%;
+        width: 100%;
+    }
+
+    .c3 {
+        display: flex;
+        justify-content: center;
+    }
+
+    .contenue {
+        display: flex;
+        flex-direction: column;
+        margin-top: 5%;
+    }
+
+    nav {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-bottom: 3%;
+    }
+
+    nav li {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        background-color: aliceblue;
+        padding: 3%;
+    }
+
+}
