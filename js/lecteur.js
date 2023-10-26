@@ -49,6 +49,7 @@ function init() {
     document.getElementById('play').addEventListener('click', function () { lecture() });
     document.getElementById('volumemoins').addEventListener('click', function () { volumemoins() });
     document.getElementById('volumeplus').addEventListener('click', function () { volumeplus() });
+    document.getElementById('search').addEventListener('keyup', function(){search()});
 
 
 
@@ -123,7 +124,6 @@ function init() {
                     '<a href="#" id="cover"><img src="' + songfetch.images[1].url + '" alt="img"></a> <h2 class="titre"><a href="#" id="titre">' + songfetch.tracks.items[i].name + '</a></h2> <p><a href="#" id="artiste">' + songfetch.artists[0].name + '</a></p>';
                 const macartepleine = document.getElementById('Mescarte');
                 madivcards.addEventListener("click", function () { carteclique(i); });
-                document.getElementById('search').addEventListener('keyup', function(){search(i)});
                 macartepleine.appendChild(madivcards);
             }
 		});	
