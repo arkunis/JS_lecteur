@@ -49,7 +49,7 @@ function init() {
     document.getElementById('play').addEventListener('click', function () { lecture() });
     document.getElementById('volumemoins').addEventListener('click', function () { volumemoins() });
     document.getElementById('volumeplus').addEventListener('click', function () { volumeplus() });
-    document.getElementById('search').addEventListener('change', function(){search()});
+    document.getElementById('search').addEventListener('keyup', function(){search()});
 
 
     // fetch('https://cors-anywhere.herokuapp.com/https://api.deezer.com/album/302127')
@@ -103,7 +103,7 @@ function init() {
 		  };
 		  
 
-		fetch('https://api.spotify.com/v1/albums/6Zvjrvs1MGgbSTZq3WJv3n?market=fr',fetchOptions)
+		fetch('https://cors-anywhere.herokuapp.com/https://api.spotify.com/v1/albums/6Zvjrvs1MGgbSTZq3WJv3n?market=fr',fetchOptions)
 		.then(function(response) {
 		  return response.json();
 		})
@@ -118,7 +118,7 @@ function init() {
             for (let i = 0; i < songfetch.tracks.items.length; i++) {
                 const madivcards = document.createElement('div');
                 madivcards.classList.add('cards');
-                madivcards.setAttribute("id", i);
+                madivcards.setAttribute("id", "monid");
                 madivcards.innerHTML =
                     '<a href="#" id="cover"><img src="' + songfetch.images[1].url + '" alt="img"></a> <h2 class="titre"><a href="#" id="titre">' + songfetch.tracks.items[i].name + '</a></h2> <p><a href="#" id="artiste">' + songfetch.artists[0].name + '</a></p>';
                 const macartepleine = document.getElementById('Mescarte');
@@ -247,5 +247,22 @@ function next() {
 }
 
 function search(){
-    console.log(document.getElementById('search').value);
+
+    let input = document.getElementById('search').value;
+    input=input.toLowerCase();
+    let x = document.getElementsById('monid');
+    let y = document.getElementsById('titre');
+    let z = document.getElementsById('artiste');
+  
+  
+    for (j = 0; j < x.length; j++) { 
+        if (!y[j].innerHTML.toLowerCase().includes(input) && !z[j].innerHTML.toLowerCase().includes(input)) {
+            x[j].style.display="none";
+        }
+        else {
+            x[j].style.display="inline";
+        }
+    }
+
+
 }
