@@ -118,8 +118,6 @@ function inputvol() {
 
 
 function suivant() {
-
-
     if (refi == songfetch.tracks.items.length - 1) {
         refi = -1;
     }
@@ -184,11 +182,15 @@ function inputmusic() {
 
 
 function next() {
+    if (refi == songfetch.tracks.items.length - 1) {
+        refi = -1;
+    }
     refi++;
     document.getElementById('lecteur').src = songfetch.tracks.items[refi].preview_url;
     document.getElementById('titreartiste').innerText = songfetch.artists[0].name;
     document.getElementById('titremusic').innerText = songfetch.tracks.items[refi].name;
-    lecture();
+    lecture()
+
 }
 
 function search() {
