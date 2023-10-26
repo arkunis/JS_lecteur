@@ -105,6 +105,7 @@ nav a {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    width: 100%;
     gap: 1%;
 }
 
@@ -120,7 +121,7 @@ nav a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 25%;
+    width: 25vh;
 }
 .cards a {
     color: rgba(0, 0, 0, 0.678);

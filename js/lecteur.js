@@ -1,40 +1,6 @@
 let play = "Play";
 let pauses = "Pause";
 let vol = 0.5;
-
-let tableauAsso = [
-    {
-        titre: "Titre1",
-        artiste: "1",
-        cover: "img/1.png",
-        musique: "./audio/Hold_On_a_Minute.mp3"
-    },
-    {
-        titre: "Titre2",
-        artiste: "2",
-        cover: "img/1.png",
-        musique: "./audio/2.mp3"
-    },
-    {
-        titre: "Titre3",
-        artiste: "3",
-        cover: "img/1.png",
-        musique: "./audio/3.mp3"
-    },
-    {
-        titre: "Titre4",
-        artiste: "4",
-        cover: "img/1.png",
-        musique: "./audio/4.mp3"
-    },
-    {
-        titre: "Titre5",
-        artiste: "5",
-        cover: "img/1.png",
-        musique: "./audio/5.mp3"
-    }
-];
-
 let refi = 0;
 let songfetch;
 
@@ -49,86 +15,62 @@ function init() {
     document.getElementById('play').addEventListener('click', function () { lecture() });
     document.getElementById('volumemoins').addEventListener('click', function () { volumemoins() });
     document.getElementById('volumeplus').addEventListener('click', function () { volumeplus() });
-    document.getElementById('search').addEventListener('keyup', function(){search()});
+    document.getElementById('search').addEventListener('keyup', function () { search() });
+
+    var client_id = 'fdaad47b01894c02984c73467e9dea84';
+    var client_secret = 'aafc32e40cab405aa1efecb9f0b0660f';
+
+    var authOptions = {
+        method: 'POST',
+        headers: {
+            'Authorization': 'Basic ' + (btoa(client_id + ':' + client_secret)),
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body:
+            'grant_type=client_credentials'
+
+    };
+
+    fetch('https://accounts.spotify.com/api/token', authOptions)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (json) {
+            console.log(json);
+
+            var fetchOptions = {
+                headers: {
+                    // 'Cache-Control': 'no-cache',
+                    'Authorization': `Bearer ${json.access_token}`,
+                    'Content-Type': 'application/json'
+                }
+            };
 
 
+            fetch('https://api.spotify.com/v1/albums/6Zvjrvs1MGgbSTZq3WJv3n?market=fr', fetchOptions)
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (json) {
+                    songfetch = json;
 
-    // fetch('https://cors-anywhere.herokuapp.com/https://api.deezer.com/album/302127')
-    //     .then(function (response) {
-    //         return response.json();
-    //     })
-    //     .then(function (json) {
-    //         songfetch = json;
+                    document.getElementById('lecteur').src = songfetch.tracks.items[refi].preview_url;
+                    document.getElementById('titreartiste').innerText = songfetch.artists[0].name;
+                    document.getElementById('titremusic').innerText = songfetch.tracks.items[refi].name
 
-    //         /* La boucle pour la création de carte */
-    //         for (let i = 0; i < json.tracks.data.length; i++) {
-    //             const madivcards = document.createElement('div');
-    //             madivcards.classList.add('cards');
-    //             madivcards.setAttribute("id", i);
-    //             madivcards.innerHTML =
-    //                 '<a href="#" id="cover"><img src="' + json.cover + '" alt="img"></a> <h2 class="titre"><a href="#" id="titre">' + json.tracks.data[i].title + '</a></h2> <p><a href="#" id="artiste">' + json.artist.name + '</a></p>';
-    //             const macartepleine = document.getElementById('Mescarte');
-    //             madivcards.addEventListener("click", function () { carteclique(i); });
-    //             macartepleine.appendChild(madivcards);
-    //         }
-    //     });
+                    /* La boucle pour la création de carte */
+                    for (let i = 0; i < songfetch.tracks.items.length; i++) {
+                        const madivcards = document.createElement('div');
+                        madivcards.classList.add('cards', 'toutpeter');
+                        madivcards.innerHTML =
+                            '<a href="#" id="cover"><img src="' + songfetch.images[1].url + '" alt="img"></a> <h2 class="titre"><a href="#" id="titre">' + songfetch.tracks.items[i].name + '</a></h2> <p><a href="#" id="artiste" class="artiste">' + songfetch.artists[0].name + '</a></p>';
+                        const macartepleine = document.getElementById('Mescarte');
+                        madivcards.addEventListener("click", function () { carteclique(i); });
+                        macartepleine.appendChild(madivcards);
+                    }
+                });
 
-
-        var client_id = 'fdaad47b01894c02984c73467e9dea84';
-		var client_secret = 'aafc32e40cab405aa1efecb9f0b0660f';
-
-		var authOptions = {
-		  method: 'POST',
-		  headers: {
-			'Authorization': 'Basic ' + (btoa(client_id + ':' + client_secret)),
-			'Content-Type': 'application/x-www-form-urlencoded'
-		  },
-		  body: 
-			'grant_type=client_credentials'
-		  
-		};
-
-		fetch('https://accounts.spotify.com/api/token',authOptions)
-		.then(function(response) {
-		  return response.json();
-		})
-		.then(function(json) {
-		  console.log(json);
-		  
-		  var fetchOptions = {
-			  headers: {
-				'Cache-Control': 'no-cache',
-				'Authorization': `Bearer ${json.access_token}`,
-				'Content-Type': 'application/json'
-			  }
-		  };
-		  
-
-		fetch('https://cors-anywhere.herokuapp.com/https://api.spotify.com/v1/albums/6Zvjrvs1MGgbSTZq3WJv3n?market=fr',fetchOptions)
-		.then(function(response) {
-		  return response.json();
-		})
-		.then(function(json) {
-            songfetch = json;
-
-            document.getElementById('lecteur').src = songfetch.tracks.items[refi].preview_url;
-            document.getElementById('titreartiste').innerText = songfetch.artists[0].name;
-            document.getElementById('titremusic').innerText = songfetch.tracks.items[refi].name
-
-            /* La boucle pour la création de carte */
-            for (let i = 0; i < songfetch.tracks.items.length; i++) {
-                const madivcards = document.createElement('div');
-                madivcards.classList.add('cards');
-                madivcards.setAttribute("id", "monid");
-                madivcards.innerHTML =
-                    '<a href="#" id="cover"><img src="' + songfetch.images[1].url + '" alt="img"></a> <h2 class="titre"><a href="#" id="titre">' + songfetch.tracks.items[i].name + '</a></h2> <p><a href="#" id="artiste">' + songfetch.artists[0].name + '</a></p>';
-                const macartepleine = document.getElementById('Mescarte');
-                madivcards.addEventListener("click", function () { carteclique(i); });
-                macartepleine.appendChild(madivcards);
-            }
-		});	
-		  
-		});
+        });
 
 }
 
@@ -247,24 +189,22 @@ function next() {
     lecture();
 }
 
-function search(index){
-
-    let input = document.getElementById('search').value;
+function search() {
+    let input = document.getElementById('search').value
     input=input.toLowerCase();
-    let x = document.getElementById('monid');
-    let y = document.getElementById('titre');
-    let z = document.getElementById('artiste');
-    console.log(input);
+    let x = document.getElementsByClassName('toutpeter');
+    let y = document.getElementsByClassName('titre');
+    let z = document.getElementsByClassName('artiste');
+  
   
     for (j = 0; j < x.length; j++) { 
         if (!y[j].innerHTML.toLowerCase().includes(input) && !z[j].innerHTML.toLowerCase().includes(input)) {
             x[j].style.display="none";
         }
         else {
-            x[j].style.display="inline";
+            x[j].style.display="";
         }
     }
 
-    console.log(input);
-
+    console.log();
 }
