@@ -254,14 +254,14 @@ function search(index){
     let x = document.getElementById('monid');
     let y = document.getElementById('titre');
     let z = document.getElementById('artiste');
+    console.log(input);
   
-  
-    for (j = 0; j < songfetch.tracks.items.length; j++) { 
-        if (!y[j].innerText.includes(input).toLowerCase() && !z[j].innerText.includes(input).toLowerCase()) {
+    for (j = 0; j < x.length; j++) { 
+        if (!y[j].innerHTML.toLowerCase().includes(input) && !z[j].innerHTML.toLowerCase().includes(input)) {
             x[j].style.display="none";
         }
         else {
-            x[j].style.display="inline";
+            x[j].style.display="";
         }
     }
 
