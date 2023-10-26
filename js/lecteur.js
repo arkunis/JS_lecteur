@@ -64,7 +64,7 @@ function init() {
                         const madivcards = document.createElement('div');
                         madivcards.classList.add('cards', 'toutpeter');
                         madivcards.innerHTML =
-                            '<a href="#" id="cover"><img src="' + songfetch.images[1].url + '" alt="img"></a> <h2 class="titre"><a href="#" id="titre">' + songfetch.tracks.items[i].name + '</a></h2> <p><a href="#" id="artiste" class="artiste">' + songfetch.artists[0].name + '</a></p>';
+                            '<img src="' + songfetch.images[1].url + '" alt="img" id="cover"> <h2 class="titre" id="titre">' + songfetch.tracks.items[i].name + '</h2> <p id="artiste" class="artiste">' + songfetch.artists[0].name + '</p>';
                         const macartepleine = document.getElementById('Mescarte');
                         madivcards.addEventListener("click", function () { carteclique(i); });
                         macartepleine.appendChild(madivcards);
