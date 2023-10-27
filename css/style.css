@@ -127,6 +127,11 @@ main {
     flex-direction: row;
     margin: 1.5%;
 }
+.loupeetsearchalbum{
+    display: flex;
+    flex-direction: row;
+    margin: 0.5%;
+}
 
 #searchtop {
     display: flex;
