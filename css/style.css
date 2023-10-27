@@ -125,6 +125,7 @@ main {
 .loupeetsearch {
     display: flex;
     flex-direction: row;
+    margin: 1.5%;
 }
 
 #searchtop {
