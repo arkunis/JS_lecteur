@@ -49,7 +49,7 @@ function init() {
             };
 
 
-            fetch('https://api.spotify.com/v1/albums/4KYnplmiYByIiD10dhinCL', fetchOptions)
+            fetch('https://api.spotify.com/v1/albums/6pEbfS09Hwul0U3MVbWRyj', fetchOptions)
                 .then(function (response) {
                     return response.json();
                 })
