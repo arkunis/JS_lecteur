@@ -17,10 +17,13 @@ function init() {
     document.getElementById('volumemoins').addEventListener('click', function () { volumemoins() });
     document.getElementById('volumeplus').addEventListener('click', function () { volumeplus() });
     document.getElementById('search').addEventListener('keyup', function () { search() });
-    document.getElementById('searchalbum').addEventListener('keyup', function () { searchalbum() });
+    document.getElementById('searchalbum').addEventListener('change', function () { searchalbum() });
 
+    fetcharticle();
+}
 
-
+/* Fetch */
+function fetcharticle(){
     var client_id = 'fdaad47b01894c02984c73467e9dea84';
     var client_secret = 'aafc32e40cab405aa1efecb9f0b0660f';
 
@@ -75,8 +78,7 @@ function init() {
                 });
 
         });
-
-}
+} 
 
 /* Bouton play / pause */
 function lecture() {
@@ -217,65 +219,8 @@ function search() {
 
 function searchalbum(){
     album = document.getElementById('searchalbum').value;
-    
-    
-    var client_id = 'fdaad47b01894c02984c73467e9dea84';
-    var client_secret = 'aafc32e40cab405aa1efecb9f0b0660f';
-
-    var authOptions = {
-        method: 'POST',
-        headers: {
-            'Authorization': 'Basic ' + (btoa(client_id + ':' + client_secret)),
-            'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body:
-            'grant_type=client_credentials'
-
-    };
-
-    fetch('https://accounts.spotify.com/api/token', authOptions)
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (json) {
-            console.log(json);
-
-            var fetchOptions = {
-                headers: {
-                    // 'Cache-Control': 'no-cache',
-                    'Authorization': `Bearer ${json.access_token}`,
-                    'Content-Type': 'application/json'
-                }
-            };
-
-            // https://cors-anywhere.herokuapp.com/ mettre ça si le réseau bloque
-            fetch('https://api.spotify.com/v1/albums/'+album, fetchOptions)
-                .then(function (response) {
-                    return response.json();
-                })
-                .then(function (json) {
-                    songfetch = json;
-
-                    document.getElementById('lecteur').src = songfetch.tracks.items[refi].preview_url;
-                    document.getElementById('titreartiste').innerText = songfetch.artists[0].name;
-                    document.getElementById('titremusic').innerText = songfetch.tracks.items[refi].name
-
-                    /* La boucle pour la création de carte */
-                    for (let i = 0; i < songfetch.tracks.items.length; i++) {
-                        const madivcards = document.createElement('div');
-                        madivcards.classList.add('cards', 'toutpeter');
-                        madivcards.innerHTML =
-                            '<img src="' + songfetch.images[1].url + '" alt="img" id="cover"> <h3 class="titre" id="titre">' + songfetch.tracks.items[i].name + '</h3> <p id="artiste" class="artiste">' + songfetch.artists[0].name + '</p>';
-                        const macartepleine = document.getElementById('Mescarte');
-                        madivcards.addEventListener("click", function () { carteclique(i); });
-                        macartepleine.appendChild(madivcards);
-                    }
-                });
-
-        });
-    
-    
-    
+    fetcharticle();
     $('#Mescarte').load('/ #Mescarte');
+    document.getElementById('searchalbum').value = document.getElementById('searchalbum').defaultValue;
     console.log(album);
 }
